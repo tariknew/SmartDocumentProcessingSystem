@@ -1,0 +1,163 @@
+<nz-page-header 
+  nzTitle="Document Info" 
+  nzBackIcon 
+  [nzGhost]="false">
+</nz-page-header>
+
+<form nz-form [formGroup]="validateForm">
+
+  
+  <nz-row [nzGutter]="16" style="margin-bottom: 35px">
+
+    <nz-col nzSpan="6">
+      <nz-form-item>
+        <nz-form-label>Document Type</nz-form-label>
+        <nz-form-control nzErrorTip="Document type is required">
+          <input nz-input formControlName="documentType" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+
+    <nz-col nzSpan="6">
+      <nz-form-item>
+        <nz-form-label>Supplier Name</nz-form-label>
+        <nz-form-control nzErrorTip="Supplier name is required">
+          <input nz-input formControlName="supplierName" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+
+    <nz-col nzSpan="6">
+      <nz-form-item>
+        <nz-form-label>Document Number</nz-form-label>
+        <nz-form-control nzErrorTip="Document number is required">
+          <input nz-input formControlName="documentNumber" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+
+    <nz-col nzSpan="6">
+      <nz-form-item>
+        <nz-form-label>Issue Date</nz-form-label>
+        <nz-form-control nzErrorTip="Issue date is required">
+          <nz-date-picker formControlName="issueDate"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+
+  
+
+  </nz-row>
+
+  <nz-row [nzGutter]="16" style="margin-top: 8px; margin-bottom: 45px">
+
+  <nz-col nzSpan="6" *ngIf="validateForm.get('documentType')?.value === 'Invoice'">
+  <nz-form-item>
+    <nz-form-label>Due Date</nz-form-label>
+    <nz-form-control nzErrorTip="Due date is required">
+      <nz-date-picker formControlName="dueDate"></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+</nz-col>
+
+  <nz-col nzSpan="6">
+      <nz-form-item>
+        <nz-form-label>Currency</nz-form-label>
+        <nz-form-control nzErrorTip="Currency is required">
+          <input nz-input formControlName="currency" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col nzSpan="6">
+  <nz-form-item>
+    <nz-form-label>Status</nz-form-label>
+    <nz-form-control nzErrorTip="Status is required">
+      <nz-select formControlName="status" nzPlaceHolder="Select status">
+        <nz-option nzValue="Uploaded" nzLabel="Uploaded"></nz-option>
+        <nz-option nzValue="NeedsReview" nzLabel="Needs Review"></nz-option>
+        <nz-option nzValue="Validated" nzLabel="Validated"></nz-option>
+        <nz-option nzValue="Rejeced" nzLabel="Rejected"></nz-option>                  
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+</nz-col>
+  <nz-col nzSpan="6">
+      <nz-form-item>
+        <nz-form-label>Tax Rate</nz-form-label>
+        <nz-form-control nzErrorTip="Tax rate is required">
+          <input nz-input type="number" step="0.01" formControlName="taxRate" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+</nz-row>
+  <nz-form-array formArrayName="lineItems">
+    <nz-form-item
+      *ngFor="let item of lineItems.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="line-item-row">
+
+        <nz-form-control nzErrorTip="Description is required" nzSpan="8">
+          <nz-form-label>Description</nz-form-label>
+          <input nz-input formControlName="description" />
+        </nz-form-control>
+
+        <nz-form-control nzErrorTip="Quantity is required" nzSpan="4">
+          <nz-form-label>Quantity</nz-form-label>
+          <input nz-input type="number" step="1" formControlName="quantity"
+                 />
+        </nz-form-control>
+
+        <nz-form-control nzErrorTip="Unit price is required" nzSpan="4">
+          <nz-form-label>Unit Price</nz-form-label>
+          <input nz-input type="number" step="0.01" formControlName="unitPrice"
+                 />
+        </nz-form-control>
+
+        <nz-form-control nzErrorTip="Total is required" nzSpan="4">
+          <nz-form-label>Total</nz-form-label>
+          <input nz-input type="number" step="0.01" formControlName="total"  />
+        </nz-form-control>
+
+       
+
+      </div>
+    </nz-form-item>
+  </nz-form-array>
+
+ 
+
+
+<nz-row class="summary-section">
+  <nz-col nzSpan="8" nzOffset="16">
+
+    <nz-form-item>
+      <nz-form-label>Subtotal</nz-form-label>
+      <nz-form-control nzErrorTip="Subtotal is required">
+        <input nz-input type="number" step="0.01" formControlName="subtotal" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Tax</nz-form-label>
+      <nz-form-control nzErrorTip="Tax is required">
+        <input nz-input type="number" step="0.01" formControlName="tax" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label>Total</nz-form-label>
+      <nz-form-control nzErrorTip="Total is required">
+        <input nz-input type="number" step="0.01" formControlName="total" />
+      </nz-form-control>
+    </nz-form-item>
+
+  </nz-col>
+</nz-row>
+
+  
+  <button nz-button nzType="primary" (click)="submitForm()">
+  Save
+</button>
+
+</form>

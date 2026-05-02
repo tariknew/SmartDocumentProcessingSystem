@@ -1,0 +1,64 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <h1>Smart Document Processing System</h1>
+    </div>
+
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li nz-menu-item nzMatchRouter>
+        <a routerLink="/dashboard">
+          <i nz-icon nzType="dashboard"></i><span>Dashboard</span>
+        </a>
+      </li>
+  <li nz-menu-item nzMatchRouter>
+        <a routerLink="/dashboard/currency-total"
+          ><i nz-icon nzType="folder-open"></i><span>Currency Total</span></a
+        >
+      </li>
+      
+
+      
+
+      
+
+      
+
+
+    </ul>
+  </nz-sider>
+
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <span
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></span>
+        </span>
+
+        <div class="user">
+          <span>Tarik</span>
+        </div>
+      </div>
+    </nz-header>
+
+    <nz-content>
+      <div class="inner-content">
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+
+    <nz-footer>
+      Smart Document Processing System ©2026 Developed By Tarik
+    </nz-footer>
+  </nz-layout>
+</nz-layout>

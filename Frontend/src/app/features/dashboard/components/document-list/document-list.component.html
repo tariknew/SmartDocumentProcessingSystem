@@ -1,0 +1,70 @@
+<nz-page-header 
+  class="site-page-header" 
+  nzTitle="Document List">
+
+  <nz-page-header-extra>
+    <button nz-button nzType="primary" (click)="fileInput.click()">
+      <span nz-icon nzType="upload"></span>
+      Upload Document
+    </button>
+
+    <input
+      type="file"
+      #fileInput
+      hidden
+      (change)="onFileSelected($event)"
+    />
+  </nz-page-header-extra>
+
+</nz-page-header>
+<nz-table [nzData]="listOfItems" [nzShowPagination]="false" [nzLoading]="loading"
+nzBordered>
+  <thead>
+    <tr>
+      <th>Document Type</th>
+      <th>Status</th>
+      <th>Errors</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of listOfItems">
+      
+      
+      <td>{{ item.documentType }}</td>
+
+      
+      <td>
+        <nz-tag 
+          [nzColor]="
+            item.status === 'Validated' ? 'green' :
+            item.status === 'Rejected' ? 'red' : 'orange'
+          ">
+          {{ item.status }}
+        </nz-tag>
+      </td>
+
+      
+      <td>
+        <nz-badge 
+          [nzCount]="item.errorCount || 0"
+          [nzShowZero]="true"
+          [nzStyle]="{ backgroundColor: item.errorCount > 0 ? '#ff4d4f' : '#52c41a' }">
+        </nz-badge>
+      </td>
+
+      
+      <td>
+        <a [routerLink]="['/dashboard/edit']" [state]="{ data: item }">
+          <span nz-icon nzType="edit" style="color: orange;"></span>
+        </a>
+
+        <nz-divider nzType="vertical"></nz-divider>
+
+        
+      </td>
+
+    </tr>
+  </tbody>
+</nz-table>
