@@ -16,7 +16,13 @@ It is primarily designed for the sample PDF and CSV files provided with the proj
 
 ### Running the Application (without docker)
 
-1. Run the Angular frontend:
+1. Install angular dependencies in project:
+
+```bash
+npm install
+```
+
+2. Run the Angular frontend:
 
 ```bash
 ng serve
