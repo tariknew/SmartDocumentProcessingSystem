@@ -1,0 +1,3 @@
+Document type,Supplier,Number,IssueDate,DueDate,Currency,TaxRate,Subtotal,Tax,Total,Description,Quantity,UnitPrice,LineTotal
+Invoice,Company X,INV-001,4/30/2026,5/10/2026,EUR,0.17,246,41.82,287.82,Item,1,78,78
+Invoice,Company X,INV-001,4/30/2026,5/10/2026,EUR,0.17,246,41.82,287.82,Item,2,84,168
