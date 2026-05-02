@@ -1,3 +1,8 @@
+# SmartDocumentProcessingSystem
+
+This management system enables users to extract structured data from PDF and CSV files and display the processed results on the frontend with validation.
+It is primarily designed for the sample PDF and CSV files provided with the project. The parsing logic is not fully generalized for all possible document formats, but it currently performs well for the supported use cases.
+
 ## Technologies Used
 
 - **Backend**: ASP.NET Core Web API with Entity Framework, both the API and the SQL database are containerized using Docker.
