@@ -28,7 +28,7 @@ npm install
 ng serve
 ```
 
-1. Run the ASP.NET Core backend:
+3. Run the ASP.NET Core backend:
 
 ```bash
 dotnet run
