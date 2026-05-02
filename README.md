@@ -36,7 +36,7 @@ dotnet run
 
 ### How to Install (with docker)
 
-1. Make sure you have Docker Desktop installed. Then run
+1. Make sure you have Docker Desktop installed. Then run provided command in the location where docker-compose.yml is:
 
 ```bash
 docker-compose up
